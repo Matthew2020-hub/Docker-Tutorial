@@ -35,6 +35,7 @@ async def update_task(id: str):
     if not get_task:
         return  HTTPException(status_code=404, detail="Object with User ID Not Found!!")
     get_task.task_completed=True
+    await get_task.save()
     return await get_task
     
 
