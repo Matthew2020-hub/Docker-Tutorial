@@ -29,12 +29,12 @@ async def create_task(data: TaskCreate):
     return HTTPException(status_code=400, detail="Check your task again!!")
 
 
-@app.put('/task-get/{id}', response_model=List[TaskSchemaPublic])
+@app.put('/task-get/{id}', response_model=TaskSchemaPublic)
 async def update_task(id: str):
-    get_task = Task.filter(id=id)
+    get_task = await Task.get(id=id)
     if not get_task:
-        return "Task object not Found"
-    get_task.update(task_completed=True)
+        return  HTTPException(status_code=404, detail="Object with User ID Not Found!!")
+    get_task.task_completed=True
     return await get_task
     
 
