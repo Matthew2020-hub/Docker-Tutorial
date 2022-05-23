@@ -1,19 +1,18 @@
 from email.policy import default
-from uuid import UUID
 from datetime import datetime
 from pydantic import BaseModel
 from typing import Optional
 
 
-class TaskSchemaPublic(BaseModel):
-    id: UUID
-    description: str
-    property: str
-    date: datetime
-    task_completed: Optional[bool] = False
+class RegistrationSchemaPublic(BaseModel):
+    full_name: str
+    password: str
+class Registration(BaseModel):
+    full_name: str
+    password: str
+
+class JWTSchema(BaseModel):
+    user_id: str
+    expire: Optional[datetime]
 
 
-class TaskCreate(BaseModel):
-    description: str
-    property: str
-    task_completed: Optional[bool] = False

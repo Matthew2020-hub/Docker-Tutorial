@@ -2,9 +2,8 @@ from tortoise import fields
 from tortoise.models import Model
 
 
-class Task(Model):
+class Register(Model):
     id = fields.UUIDField(pk=True)
-    property = fields.CharField(max_length=200)
-    description = fields.CharField(max_length=200)
-    date = fields.DatetimeField(auto_now_add=True)
-    task_completed = fields.BooleanField(default=False)
+    full_name = fields.CharField(max_length=200)
+    password = fields.CharField(max_length=50)
+
